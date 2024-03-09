@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-
+"""
+A simple line-oriented command interpreter
+"""
 
 import cmd
 from typing import IO
+
 
 class Commands(cmd.Cmd):
         '''

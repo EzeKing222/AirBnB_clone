@@ -5,13 +5,14 @@ Base model
 
 import uuid
 from datetime import datetime
+#import models
 
 class BaseModel():
         """
         This class define all attributes and methods for other classes
         """
 
-        def __init__(self) -> None:
+        def __init__(self, *args, **kwargs) -> None:
                 """
                 class instance
 
@@ -24,16 +25,30 @@ class BaseModel():
                         when instance is created, it is updated every time object is changed
                 """
 
-                self.id = str(uuid.uuid4())
-                self.created_at = datetime.utcnow()
-                self.updated_at = datetime.utcnow()
+                time_fmt = "%Y-%m-%dT%H:%M:%S.%f"
+
+                if kwargs:
+                        for key, value in kwargs.items():
+                                if key == __class__:
+                                        continue
+                                elif key == "created_at" or key == "updated_at":
+                                        setattr(self, key, datetime.strptime(value, time_fmt))
+                                else:
+                                        setattr(self, key, value)
+                else:
+                        self.id = str(uuid.uuid4())
+                        self.created_at = datetime.utcnow()
+                        self.updated_at = datetime.utcnow()
+
+                #models.storage.new(self)
 
         def save(self):
                 """
                 update the created attribute
                 """
 
-                self.updated = datetime.utcnow()
+                self.updated_at = datetime.utcnow()
+                #models.storage.save()
 
         def to_dict(self):
                 """
@@ -62,8 +77,10 @@ if __name__ == "__main__":
         my_model.my_number = 89
         print(my_model)
         my_model.save()
+        print()
         print(my_model)
         my_model_json = my_model.to_dict()
+        print()
         print(my_model_json)
         print("json of my model:")
         for key in my_model_json.keys():
