@@ -35,15 +35,8 @@ class HBNBCommand(cmd.Cmd):
         '''
         return True
 
-    def postloop(self):
-        print()
-    '''
-    #aliasing
-    #do_quit = do_exit
-    '''
-
     prompt = '(hbnb) '
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
