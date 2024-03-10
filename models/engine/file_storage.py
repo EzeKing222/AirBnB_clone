@@ -21,7 +21,7 @@ class FileStorage():
         sets in __objects the obj with key <obj class name>.id
         '''
         object_class_name = obj.__class__.__name__
-        key = '{}.{}'.format(object_class_name, obj.id)
+        key = f'{object_class_name}.{obj.id}'
         FileStorage.__objects[key] = obj
 
     def all(self):
