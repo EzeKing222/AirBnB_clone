@@ -7,7 +7,8 @@ import cmd
 from typing import IO
 
 
-class Commands(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
+
         '''
         A simple line-oriented command interpreter.
         '''
@@ -24,7 +25,7 @@ class Commands(cmd.Cmd):
                 '''
                 super().__init__(completekey, stdin, stdout)
 
-        def do_exit(self, line):
+        def do_quit(self, line):
                 '''
                 provides the exit command to abort the interpreter.
                 '''
@@ -39,9 +40,9 @@ class Commands(cmd.Cmd):
         def postloop(self) -> None:
                 print()
         #aliasing
-        do_quit = do_exit
+        #do_quit = do_exit
 
         prompt = '(hbnb) '
 
-Commands().cmdloop()
-#print (Commands.__doc__)
+if __name__ == "__main__":
+        HBNBCommand().cmdloop()
