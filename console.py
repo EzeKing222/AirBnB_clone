@@ -3,7 +3,6 @@
 A simple line-oriented command interpreter
 """
 import cmd
-from typing import IO
 
 
 class HBNBCommand(cmd.Cmd):
