@@ -4,17 +4,17 @@ serialize/deserialize instance to JSON file
 """
 import json
 import os
-from models.base_model import BaseModel
+'''from models.base_model import BaseModel'''
+
 
 class FileStorage():
     '''
     serialize instances to JSON file, and
-        deserialize JSON file to instances.
+    deserialize JSON file to instances.
    '''
 
     __file_path = 'file.json'
     __objects = {}
-
 
     def new(self, obj):
         '''
@@ -47,7 +47,7 @@ class FileStorage():
     def reload(self):
         '''
         deserializes JSON file to __objects (only if JSON file
-            (__file_path) exist. otherwise do nothing.
+        (__file_path) exist. otherwise do nothing.
         '''
 
         if os.path.isfile(FileStorage.__file_path):
