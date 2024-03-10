@@ -15,22 +15,20 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """
-        class instance
+        class instance constructor
 
         Args:
 
-        id: string - assigned to uuid when instance is created.
-        created_at: datetime - assigned with current datetime
-        when instance is created.
-        updated_at: datetime - assigned with current datetime
-        when instance is created, it is updated every time object is changed
+        self: instance of the class
+        *args: recieved positional arg as tuple
+        **kwargs: recieved positional args as dict.
         """
 
         time_fmt = "%Y-%m-%dT%H:%M:%S.%f"
 
         if kwargs:
             for key, value in kwargs.items():
-                if key == __class__:
+                if key == '__class__':
                     continue
                 elif key == "created_at" or key == "updated_at":
                     setattr(self, key, datetime.strptime(value, time_fmt))
@@ -49,7 +47,7 @@ class BaseModel():
         """
 
         self.updated_at = datetime.utcnow()
-        models.storage.save()
+        '''models.storage.save()'''
 
     def to_dict(self):
         """
@@ -76,4 +74,5 @@ if __name__ == "__main__":
     my_model = BaseModel()
     my_model.name = "king"
     my_model.my_number = 89
-    print(my_model)
+    model_dict = my_model.to_dict()
+    print(model_dict)

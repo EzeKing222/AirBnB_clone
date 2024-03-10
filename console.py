@@ -63,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
 
         commands = shlex.split(line)
 
-        if len(commands) == 0:
+        if len(commands) < 1:
             print('** class name missing **')
         elif commands[0] not in self.valid_classes:
             print("** class doesn't exist **")
@@ -80,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
 
         commands = shlex.split(line)
 
-        if len(commands) == 0:
+        if len(commands) < 1:
             print('** class name missing **')
         elif commands[0] not in self.valid_classes:
             print("** class doesn't exist **")
@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
 
         commands = shlex.split(line)
 
-        if len(commands) == 0:
+        if len(commands) < 1:
             print('** class name missing **')
         elif commands[0] not in self.valid_classes:
             print("** class doesn't exist **")
@@ -131,13 +131,13 @@ class HBNBCommand(cmd.Cmd):
 
         commands = shlex.split(line)
 
-        if len(commands) == 0:
-            for key, value in object.items():
+        if len(commands) < 1:
+            for key, value in objects.items():
                 print(str(value))
         elif commands[0] not in self.valid_classes:
             print("** class doesn't exist **")
         else:
-            for key, value in object.items():
+            for key, value in objects.items():
                 if key.split('.')[0] == commands[0]:
                     print(str(value))
 
@@ -149,7 +149,7 @@ class HBNBCommand(cmd.Cmd):
 
         commands = shlex.split(line)
 
-        if len(commands) == 0:
+        if len(commands) < 1:
             print('** class name missing **')
         elif commands[0] not in self.valid_classes:
             print("** class doesn't exist **")
